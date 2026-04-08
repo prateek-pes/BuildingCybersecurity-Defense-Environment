@@ -1,3 +1,12 @@
+---
+title: OpenEnv Cybersecurity
+emoji: 🛡️
+colorFrom: blue
+colorTo: green
+sdk: docker
+pinned: false
+---
+
 # OpenEnv Cybersecurity Defense
 
 A fully compliant real-world OpenEnv simulation environment where an AI agent attempts to defend a simulated network environment from varying threats.
