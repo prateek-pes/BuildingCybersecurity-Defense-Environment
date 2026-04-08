@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenEnv - Cyber Defense Console</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h1>CYBER DEFENSE SYSTEM</h1>
+            </div>
+            <div class="status-indicator">
+                <div class="led active" id="system-status-led"></div>
+                <span id="system-status-text">SYSTEM ONLINE</span>
+            </div>
+        </header>
+
+        <div class="main-grid">
+            <!-- Telemetry panel showing raw metrics -->
+            <section class="panel telemetry">
+                <h2>Live Telemetry</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="label">INCOMING REQ/S</span>
+                        <div class="value value-normal" id="metric-reqs">0</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">SYSTEM LOAD</span>
+                        <div class="value value-normal" id="metric-load">0.00</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">SUSPICIOUS ACT</span>
+                        <div class="value value-normal" id="metric-susp">0</div>
+                    </div>
+                    <div class="metric-card">
+                        <span class="label">NETWORK HEALTH</span>
+                        <div class="value value-success" id="metric-health">100.0</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agent Activity panel showing what the agent just did -->
+            <section class="panel agent-feed">
+                <h2>Defense Agent Feed</h2>
+                <div class="sequence-list" id="agent-logs">
+                    <!-- Logs will be populated here -->
+                </div>
+            </section>
+
+            <!-- Control panel for forcing manual resets -->
+            <section class="panel controls">
+                <h2>Simulation Control</h2>
+                <div class="control-group">
+                    <label>Task Difficulty</label>
+                    <select id="task-select">
+                        <option value="easy">EASY - Basic DDoS</option>
+                        <option value="medium">MEDIUM - Compound Attacks</option>
+                        <option value="hard">HARD - Zero Days</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" id="btn-reset">Reset Simulation</button>
+            </section>
+            
+            <section class="panel episode-stats">
+                 <h2>Episode Info</h2>
+                 <div class="stats-row">
+                     <span>Current Task:</span>
+                     <span class="stat-value" id="stat-task">easy</span>
+                 </div>
+                 <div class="stats-row">
+                     <span>Step:</span>
+                     <span class="stat-value"><span id="stat-step">0</span> / <span id="stat-max-steps">10</span></span>
+                 </div>
+            </section>
+        </div>
+    </div>
+    
+    <script src="/static/app.js"></script>
+</body>
+</html>

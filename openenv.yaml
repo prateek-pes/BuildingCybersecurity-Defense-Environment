@@ -1,0 +1,38 @@
+environment_name: "CybersecurityDefense-v1"
+description: "A cybersecurity defense simulation where an AI agent defends a network using actions block_ip, scan_system, deploy_patch, or ignore."
+version: "1.0.0"
+
+observation_space:
+  type: "dict"
+  properties:
+    incoming_requests:
+      type: "int"
+      description: "Number of incoming network requests per second."
+    system_load:
+      type: "float"
+      description: "Current CPU/Memory load percentage (0.0 to 1.0)."
+    suspicious_activity:
+      type: "int"
+      description: "Counter of suspicious/malicious signatures detected."
+    network_health:
+      type: "float"
+      description: "Overall health of the network, starts at 100.0."
+
+action_space:
+  type: "categorical"
+  choices:
+    - "block_ip"     # Blocks malicious traffic (DDoS)
+    - "scan_system"  # Scans for and removes malware
+    - "deploy_patch" # Patches zero-day exploits
+    - "ignore"       # Do nothing
+
+tasks:
+  - id: "easy"
+    description: "Occasional simple attacks (mostly DDoS)."
+    entry_point: "tasks.easy"
+  - id: "medium"
+    description: "Mixed attacks (DDoS, Malware) with moderate frequency."
+    entry_point: "tasks.medium"
+  - id: "hard"
+    description: "High-frequency, multi-vector attacks including zero-days."
+    entry_point: "tasks.hard"
