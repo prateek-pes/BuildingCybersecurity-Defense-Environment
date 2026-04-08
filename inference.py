@@ -58,7 +58,8 @@ def run_task(task_id: str):
         # Reset Env
         resp = requests.post(f"{ENV_URL}/reset", json={"task_id": task_id, "seed": 42})
         resp.raise_for_status()
-        observation = resp.json()
+        state_data = resp.json()
+        observation = state_data["observation"]
         
         done = False
         step = 0
